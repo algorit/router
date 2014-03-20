@@ -28,7 +28,7 @@ class RouterServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		
 	}
 
 	/**
