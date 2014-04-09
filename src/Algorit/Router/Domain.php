@@ -15,7 +15,7 @@ class Domain {
 	/**
 	 * Class constructor.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Algorit\Router\Domain
 	 */
 	public function __construct(Request $request)
@@ -26,7 +26,7 @@ class Domain {
 	/**
 	 * Get the request.
 	 *
-	 * @return \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Request 
 	 */
 	public function getRequest()
 	{

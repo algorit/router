@@ -4,7 +4,15 @@ use Algorit\Router\Contracts\ListInterface;
 
 class Lists implements ListInterface {
 
-	protected $list = array('whitelist' => array(), 'blacklist' => array());
+	/**
+	 * Lists.
+	 *
+	 * @var array
+	 */
+	protected $list = array(
+		'whitelist' => array(),
+		'blacklist' => array()
+	);
 
 	/**
 	 * Add to a given list.
@@ -39,5 +47,5 @@ class Lists implements ListInterface {
 	{
 		return $this->list[$list];
 	}
-	
+
 }
