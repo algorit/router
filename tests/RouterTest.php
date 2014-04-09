@@ -9,14 +9,40 @@ class RouterTest extends TestCase {
 	{
 		parent::__construct();
 
-		$request = Mockery::mock('Illuminate\Http\Request');
-		$list = Mockery::mock('Algorit\Router\Contracts\ListInterface');
-
-		$this->router = new Router($request, $list);
+		$this->app = Mockery::mock('Illuminate\Foundation\Application');
+		$this->app->request = Mockery::mock('Illuminate\Http\Request');
+		
 	}
 
 	public function testInstance()
 	{
-		$this->assertInstanceof('Algorit\Router\Contracts\ListInterface', $this->router->getList());
+		$this->app->request->shouldReceive('getClientIp')
+						   ->once()
+						   ->andReturn('127.0.0.1');
+
+		$router = new Router($this->app);
+
+		$router->setList(Mockery::mock('Algorit\Router\Contracts\ListInterface'));
+
+		$this->assertInstanceof('Algorit\Router\Contracts\ListInterface', $router->getList());
+	}
+
+	public function testProvider()
+	{
+		$this->app->request->shouldReceive('getClientIp')
+			 ->once()
+			 ->andReturn('127.0.0.1');
+
+		$provider = Mockery::mock('Algorit\Router\RouteServiceProvider');
+
+		$this->app->shouldReceive('register')
+				  ->once()
+				  ->andReturn($provider);
+
+		$router = new Router($this->app);
+
+		$provider = $router->registerProvider('Provider');
+
+		$this->assertInstanceOf('Algorit\Router\RouteServiceProvider', $provider);
 	}
 }
