@@ -9,7 +9,7 @@ class RouterServiceProvider extends ServiceProvider {
 	 *
 	 * @var bool
 	 */
-	protected $defer = false;
+	protected $defer = true;
 
 	/**
 	 * Bootstrap the application events.
@@ -28,7 +28,10 @@ class RouterServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		
+		$this->app['algorit.router'] = $this->app->share(function($app)
+		{
+			return (new Router($app))->setList(new Lists);
+		});
 	}
 
 	/**
@@ -38,7 +41,7 @@ class RouterServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('router');
 	}
 
 }
