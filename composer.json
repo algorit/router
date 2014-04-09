@@ -1,6 +1,7 @@
 {
     "name": "algorit/router",
     "description": "",
+    "license": "MIT",
     "authors": [
         {
             "name": "Gabriel Koerich",
