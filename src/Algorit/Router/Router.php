@@ -1,7 +1,7 @@
 <?php namespace Algorit\Router;
 
 use Closure;
-use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Algorit\Router\Contracts\ListInterface;
 
 class Router {
@@ -37,14 +37,13 @@ class Router {
 	/**
 	 * Class constructor.
 	 *
-	 * @param  \Illuminate\Foundation\Application  $app
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Algorit\Router\Router
 	 */
-	public function __construct(Application $app)
+	public function __construct(Request $request)
 	{
-		$this->app = $app;
-		$this->ip  = $app->request->getClientIp();
-		$this->request = $app->request;
+		$this->ip = $request->getClientIp();
+		$this->request = $request;
 	}
 
 	/**
@@ -78,16 +77,6 @@ class Router {
 	public function domain(Closure $callback)
 	{
 		return $callback(new Domain($this->request));
-	}
-
-	/**
-	 * Register a service provider
-	 *
-	 * @return \Illuminate\Foundation\Application
-	 */
-	public function registerProvider($name)
-	{
-		return $this->app->register($name);
 	}
 
 	/**

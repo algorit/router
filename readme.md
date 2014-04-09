@@ -45,7 +45,7 @@ At the end of `config/app.php` add our facade to the `aliases` array
 
 ## Usage
 
-Domains / Providers:
+Domains:
 ```php
 Router::domain(function($domain)
 {
@@ -54,8 +54,8 @@ Router::domain(function($domain)
 
 	$domain->is('http://mystore.com', function()
 	{	
-		// Register a provider
-		Router::registerProvider('Application\Modules\Store\StoreServiceProvider');
+		// Register a provider / module
+		App::register('Application\Modules\Store\StoreServiceProvider');
 
 		// Or call Laravel Route and register the routes for this domain
 	});
