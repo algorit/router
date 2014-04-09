@@ -6,33 +6,38 @@ class Lists implements ListInterface {
 
 	protected $list = array('whitelist' => array(), 'blacklist' => array());
 
+	/**
+	 * Add to a given list.
+	 *
+	 * @return \Algorit\Router\Lists
+	 */
 	public function add($list, $data)
 	{	
-		if( ! is_array($data))
-		{
-			$data = array($data);
-		}
-
-		$this->list[$list] = array_merge($this->list[$list], $data);
+		$this->list[$list] = array_merge($this->list[$list], is_array($data) ?: array($data));
 
 		return $this;
 	}
 
+	/**
+	 * Remove from a list.
+	 *
+	 * @return \Algorit\Router\Lists
+	 */
 	public function remove($list, $data)
 	{
-		if( ! is_array($data))
-		{
-			$data = array($data);
-		}
-
-		$this->list[$list] = array_diff($this->list[$list], $data);
+		$this->list[$list] = array_diff($this->list[$list], is_array($data) ?: array($data));
 
 		return $this;
 	}
 
+	/**
+	 * Get all from list
+	 *
+	 * @return array
+	 */
 	public function get($list)
 	{
 		return $this->list[$list];
 	}
-
+	
 }
