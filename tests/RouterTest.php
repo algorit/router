@@ -11,7 +11,6 @@ class RouterTest extends TestCase {
 
 		$this->app = Mockery::mock('Illuminate\Foundation\Application');
 		$this->app->request = Mockery::mock('Illuminate\Http\Request');
-		
 	}
 
 	public function testInstance()

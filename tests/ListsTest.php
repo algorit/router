@@ -26,6 +26,7 @@ class ListsTest extends TestCase {
 	{
 		$this->list = new Lists;
 		$this->list->add('whitelist', $this->data);
+		
 		$this->assertEquals(array($this->data), $this->list->get('whitelist'));
 
 		$this->list->remove('whitelist', '192.168.7.1');
