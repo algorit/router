@@ -9,16 +9,7 @@ class DomainTest extends TestCase {
 	{
 		parent::__construct();
 	}
-
-	public function testGetRequest()
-	{
-		$request = Mockery::mock('Illuminate\Http\Request');
-
-		$domain = new Domain($request);
-
-		$this->assertInstanceOf('Illuminate\Http\Request', $domain->getRequest());
-	}
-
+	
 	public function testGetRoot()
 	{
 		$request = Mockery::mock('Illuminate\Http\Request');

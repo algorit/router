@@ -30,7 +30,7 @@ class RouterServiceProvider extends ServiceProvider {
 	{
 		$this->app['algorit.router'] = $this->app->share(function($app)
 		{
-			return (new Router($app['request']))->setList(new Lists);
+			return new Router($app['request'], new Lists);
 		});
 	}
 

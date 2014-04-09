@@ -24,16 +24,6 @@ class Domain {
 	}
 
 	/**
-	 * Get the request.
-	 *
-	 * @return \Illuminate\Http\Request 
-	 */
-	public function getRequest()
-	{
-		return $this->request;
-	}
-
-	/**
 	 * Get the root path.
 	 *
 	 * @return string

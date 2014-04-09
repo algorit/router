@@ -7,13 +7,6 @@ use Algorit\Router\Contracts\ListInterface;
 class Router {
 
 	/**
-	 * The app isntance.
-	 *
-	 * @var \Illuminate\Foundation\Application
-	 */
-	private $app;
-
-	/**
 	 * The request instance.
 	 *
 	 * @var \Illuminate\Http\Request
@@ -38,25 +31,14 @@ class Router {
 	 * Class constructor.
 	 *
 	 * @param  \Illuminate\Http\Request $request
-	 * @return \Algorit\Router\Router
-	 */
-	public function __construct(Request $request)
-	{
-		$this->ip = $request->getClientIp();
-		$this->request = $request;
-	}
-
-	/**
-	 * Set the list instance
-	 *
 	 * @param  \Algorit\Router\Contracts\ListInterface  $list
 	 * @return \Algorit\Router\Router
 	 */
-	public function setList(ListInterface $list)
+	public function __construct(Request $request, ListInterface $list)
 	{
+		$this->ip = $request->getClientIp();
 		$this->list = $list;
-
-		return $this;
+		$this->request = $request;
 	}
 
 	/**

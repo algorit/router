@@ -18,9 +18,7 @@ class RouterTest extends TestCase {
 					  ->once()
 					  ->andReturn('127.0.0.1');
 
-		$router = new Router($this->request);
-
-		$router->setList(Mockery::mock('Algorit\Router\Contracts\ListInterface'));
+		$router = new Router($this->request, Mockery::mock('Algorit\Router\Contracts\ListInterface'));
 
 		$this->assertInstanceof('Algorit\Router\Contracts\ListInterface', $router->getList());
 	}
