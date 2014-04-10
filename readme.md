@@ -25,7 +25,7 @@ Update your packages running `composer update`
 
 In your `config/app.php` add the provider to the `providers` array
 
-```
+```php
 'providers' => array(
 
     'Algorit\Router\RouterServiceProvider',
@@ -35,7 +35,7 @@ In your `config/app.php` add the provider to the `providers` array
 
 At the end of `config/app.php` add our facade to the `aliases` array
 
-```
+```php
 'aliases' => array(
 
     'Router'    => 'Algorit\Router\Facades\Router',
