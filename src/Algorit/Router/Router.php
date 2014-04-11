@@ -70,7 +70,7 @@ class Router {
 	{
 		if(in_array($this->ip, $this->list->get('whitelist')))
 		{
-			$callback();
+			return $callback();
 		}
 
 		return $this;
@@ -85,7 +85,7 @@ class Router {
 	{
 		if(in_array($this->ip, $this->list->get('blacklist')))
 		{
-			$callback();
+			return $callback();
 		}
 
 		return $this;
