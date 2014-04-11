@@ -42,8 +42,8 @@ class RouterTest extends TestCase {
 	public function testNotInList()
 	{
 		$this->request->shouldReceive('getClientIp')
-				->once()
-				->andReturn('127.0.0.1');
+					  ->once()
+					  ->andReturn('127.0.0.1');
 
 		$list = Mockery::mock('Algorit\Router\Contracts\ListInterface');
 		$list->shouldReceive('get')
@@ -78,8 +78,8 @@ class RouterTest extends TestCase {
 	public function testInList()
 	{
 		$this->request->shouldReceive('getClientIp')
-				->once()
-				->andReturn('127.0.0.1');
+					  ->once()
+					  ->andReturn('127.0.0.1');
 
 		$list = Mockery::mock('Algorit\Router\Contracts\ListInterface');
 		$list->shouldReceive('get')
