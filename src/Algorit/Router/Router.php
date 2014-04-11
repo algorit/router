@@ -68,7 +68,7 @@ class Router {
 	 */
 	public function whitelist(Closure $callback)
 	{
-		return $this->list('whitelist', $callback);
+		return $this->lists('whitelist', $callback);
 	}
 
 	/**
@@ -78,7 +78,7 @@ class Router {
 	 */
 	public function blacklist(Closure $callback)
 	{
-		return $this->list('blacklist', $callback);
+		return $this->lists('blacklist', $callback);
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Router {
 	 *
 	 * @return \Algorit\Router\Router
 	 */
-	private function list($list, Closure $callback)
+	private function lists($list, Closure $callback)
 	{
 		if(in_array($this->ip, $this->list->get($list)))
 		{

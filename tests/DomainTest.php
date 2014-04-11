@@ -22,7 +22,7 @@ class DomainTest extends TestCase {
 		$this->assertEquals('http://example.com', $domain->getRoot());
 	}
 
-	public function testIsThatDomain()
+	public function testIsDomain()
 	{
 		$request = Mockery::mock('Illuminate\Http\Request');
 		$request->shouldReceive('root')
@@ -37,5 +37,23 @@ class DomainTest extends TestCase {
 		});
 
 		$this->assertEquals($make, 'tested!');
+	}
+
+	public function testIsNotDomain()
+	{
+		$request = Mockery::mock('Illuminate\Http\Request');
+		$request->shouldReceive('root')
+				->once()
+				->andReturn('http://example.com');
+
+		$domain = new Domain($request);
+
+		$make = $domain->is('http://notexample.com', function()
+		{
+			return 'tested!';
+		});
+
+		$this->assertNotEquals($make, 'tested!');
+		$this->assertInstanceOf('Algorit\Router\Domain', $make);
 	}
 }
