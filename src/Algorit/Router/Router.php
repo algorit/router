@@ -68,12 +68,7 @@ class Router {
 	 */
 	public function whitelist(Closure $callback)
 	{
-		if(in_array($this->ip, $this->list->get('whitelist')))
-		{
-			return $callback($this);
-		}
-
-		return $this;
+		return $this->list('whitelist', $callback);
 	}
 
 	/**
@@ -83,7 +78,17 @@ class Router {
 	 */
 	public function blacklist(Closure $callback)
 	{
-		if(in_array($this->ip, $this->list->get('blacklist')))
+		return $this->list('blacklist', $callback);
+	}
+
+	/**
+	 * Check if ip is in a given list
+	 *
+	 * @return \Algorit\Router\Router
+	 */
+	private function list($list, Closure $callback)
+	{
+		if(in_array($this->ip, $this->list->get($list)))
 		{
 			return $callback($this);
 		}
