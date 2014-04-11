@@ -41,7 +41,7 @@ class RouterServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('router');
+		return array('algorit.router');
 	}
 
 }
