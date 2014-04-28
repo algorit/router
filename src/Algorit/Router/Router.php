@@ -59,9 +59,9 @@ class Router {
 	public function domain(Closure $callback)
 	{
 		if(php_sapi_name() == 'cli')
-        {
-        	return false;
-        }
+		{
+			return false;
+		}
         
 		return $callback(new Domain($this->request));
 	}
