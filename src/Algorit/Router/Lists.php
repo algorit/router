@@ -21,7 +21,7 @@ class Lists implements ListInterface {
 	 */
 	public function add($list, $data)
 	{	
-		$this->list[$list] = array_merge($this->list[$list], is_array($data) ?: array($data));
+		$this->list[$list] = array_merge($this->list[$list], is_array($data) ? $data : array($data));
 
 		return $this;
 	}
@@ -33,7 +33,7 @@ class Lists implements ListInterface {
 	 */
 	public function remove($list, $data)
 	{
-		$this->list[$list] = array_diff($this->list[$list], is_array($data) ?: array($data));
+		$this->list[$list] = array_diff($this->list[$list], is_array($data) ? $data : array($data));
 
 		return $this;
 	}
