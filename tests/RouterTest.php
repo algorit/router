@@ -23,22 +23,6 @@ class RouterTest extends TestCase {
 		$this->assertInstanceof('Algorit\Router\Contracts\ListInterface', $router->getList());
 	}
 
-	public function testDomain()
-	{
-		$this->request->shouldReceive('getClientIp')
-				->once()
-				->andReturn('127.0.0.1');
-
-		$router = new Router($this->request, Mockery::mock('Algorit\Router\Contracts\ListInterface'));
-
-		$domain = $router->domain(function($domain)
-		{
-			return $domain;
-		});	
-
-		$this->assertInstanceOf('Algorit\Router\Domain', $domain);
-	}
-
 	public function testNotInList()
 	{
 		$this->request->shouldReceive('getClientIp')
